@@ -1,13 +1,13 @@
 name: ci
 
 on: [workflow_dispatch]
-#   push:
-#     branches:
-#       - main
+  push:
+    branches: [ "main" ]
+      
 
 env:            
-  AWS_REGION: #replace-value      
-  ECR_REPOSITORY: #replace-value
+  AWS_REGION: ap-southeast-1 #replace-value      
+  ECR_REPOSITORY: sara_21sep #replace-value
 
 jobs:
   build:
@@ -35,3 +35,6 @@ jobs:
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        # run: |
+        #   docker build --no-cache --target test .
+        #   docker build --no-cache --target base .
