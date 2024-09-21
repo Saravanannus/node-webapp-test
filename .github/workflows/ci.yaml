@@ -32,13 +32,12 @@ jobs:
           IMAGE_TAG: ${{ github.sha }}
 
       - name: Build, tag, and push image to Amazon ECR
-        id: test-image
-        
+        id: test-image001
         run: |
-          docker build --no-cache --target test .  
+          docker build --no-cache --target base .  
 
       - name: Build, tag, and push image to Amazon ECR
-        id: push-image
+        id: push-image001
 
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
